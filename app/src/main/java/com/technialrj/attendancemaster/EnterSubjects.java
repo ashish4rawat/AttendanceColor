@@ -98,12 +98,7 @@ public class EnterSubjects extends Fragment {
 
 
                                                                 String sub_name  = view.getText().toString();
-
-                                                                if(dbHelper.addSubject(sub_name)){
-                                                                        Log.i("InfoText","added success ful subje");
-                                                                }else{
-                                                                        Log.i("InfoText","failed to add");
-                                                                }
+                                                                dbHelper.addSubject(sub_name) ;
 
 
                                                 }

@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,11 +13,9 @@ public class TTSubjectsAdapter extends RecyclerView.Adapter<TTSubjectsAdapter.Vi
 
 
         ArrayList<String> myNames ;
-        ArrayList<Integer> myImages ;
 
-        public TTSubjectsAdapter(ArrayList<String> names, ArrayList<Integer> images) {
+        public TTSubjectsAdapter(ArrayList<String> names) {
                 myNames = names;
-                myImages = images;
         }
 
         @Override
@@ -44,7 +41,6 @@ public class TTSubjectsAdapter extends RecyclerView.Adapter<TTSubjectsAdapter.Vi
         public class ViewHolder extends RecyclerView.ViewHolder {
 
                 public TextView singleName;
-                public ImageView imageView;
 
                 public ViewHolder(View itemView) {
 

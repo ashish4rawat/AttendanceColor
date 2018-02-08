@@ -27,6 +27,7 @@ public class EnterSubjects extends Fragment {
         Button saveButton;
         public int editTextCount = 0;
         int errorFlag = 0;
+        DBHelper dbHelper ;
 
 
 
@@ -42,7 +43,7 @@ public class EnterSubjects extends Fragment {
 
                 getActivity().setTitle("Subjects");
 
-
+                dbHelper = new DBHelper(getActivity());
                 setHasOptionsMenu(true);
                 linearLayout = view.findViewById(R.id.subjectNameLayout);
                 saveButton = view.findViewById(R.id.saveButton);
@@ -91,8 +92,27 @@ public class EnterSubjects extends Fragment {
                                         Toast.makeText(getActivity(),"Successfully Saved Subjects",Toast.LENGTH_SHORT).show();
                                         // Put the subjects saving code here
 
+                                        for(int i  = 0 ;i< linearLayout.getChildCount() ;i++){
+                                                if(linearLayout.getChildAt(i) instanceof EditText) {
+                                                        EditText view = (EditText)linearLayout.getChildAt(i);
+
+
+                                                                String sub_name  = view.getText().toString();
+
+                                                                if(dbHelper.addSubject(sub_name)){
+                                                                        Log.i("InfoText","added success ful subje");
+                                                                }else{
+                                                                        Log.i("InfoText","failed to add");
+                                                                }
+
+
+                                                }
+
+                                        }
+
                                         Intent intent = new Intent(getContext(),EnterTimeTable.class);
                                         startActivity(intent);
+                                        getActivity().finish();
 
                                 }
 
@@ -170,7 +190,7 @@ public class EnterSubjects extends Fragment {
                 subjectName.setLayoutParams(layoutParams);
                 subjectName.setId(editTextCount);
                 subjectName.setBackgroundResource(R.drawable.add_subject_back);
-                Log.i("InfoText",editTextCount+" ");
+                subjectName.requestFocus();
 
                 ++editTextCount;
 
